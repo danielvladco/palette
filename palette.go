@@ -227,6 +227,13 @@ type RGBA struct {
 func (rgba RGBA) Mix(rgba2 RGBA, amount float64) RGBA { return Mix(rgba, rgba2, amount) }
 func (rgba RGBA) Multiply(rgba2 RGBA) RGBA            { return Multiply(rgba, rgba2) }
 
+func (rgba RGBA) ToHex() string {
+	if rgba.A == 0xffff {
+		return fmt.Sprintf("#%02X%02X%02X", uint8(rgba.R*0.5)>>8, uint8(rgba.G*0.5)>>8, uint8(rgba.B*0.5)>>8)
+	}
+
+	return fmt.Sprintf("#%02X%02X%02X%02X", uint8(rgba.R*0.5)>>8, uint8(rgba.G*0.5)>>8, uint8(rgba.B*0.5)>>8, uint8(rgba.A*0.5)>>8)
+}
 func (rgba RGBA) RGBA() (r, g, b, a uint32) {
 	r = uint32(rgba.R*0xffff + 0.5)
 	g = uint32(rgba.G*0xffff + 0.5)

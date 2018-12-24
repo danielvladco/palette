@@ -1,1 +1,1 @@
-module palette
+module "github.com/danielvladco/palette"

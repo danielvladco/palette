@@ -1,1 +1,1 @@
-module "github.com/danielvladco/palette"
+module github.com/danielvladco/palette

@@ -234,6 +234,7 @@ func (rgba RGBA) ToHex() string {
 
 	return fmt.Sprintf("#%02X%02X%02X%02X", uint8(rgba.R*0xff+0.5), uint8(rgba.G*0xff+0.5), uint8(rgba.B*0xff+0.5), uint8(rgba.A*0xff+0.5))
 }
+
 func (rgba RGBA) RGBA() (r, g, b, a uint32) {
 	r = uint32(rgba.R*0xffff + 0.5)
 	g = uint32(rgba.G*0xffff + 0.5)
@@ -282,10 +283,7 @@ type HSLA struct {
 	H, S, L, A float64
 }
 
-func (hsla HSLA) RGBA() (r, g, b, a uint32) {
-	return hsla.ToRGBA().RGBA()
-}
-
+func (hsla HSLA) RGBA() (r, g, b, a uint32)                                    { return hsla.ToRGBA().RGBA() }
 func (hsla HSLA) Triad() (color.Color, color.Color, color.Color)               { return Triad(hsla) }
 func (hsla HSLA) Tetrad() (color.Color, color.Color, color.Color, color.Color) { return Tetrad(hsla) }
 func (hsla HSLA) Saturate(amount float64) HSLA                                 { return Saturate(hsla, amount) }

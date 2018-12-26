@@ -98,14 +98,14 @@ func Parse(colorStr string) color.Color {
 
 func Random() color.Color {
 	return color.RGBA64{
-		R: uint16(rand.Intn(0xffff + 1)),
-		G: uint16(rand.Intn(0xffff + 1)),
-		B: uint16(rand.Intn(0xffff + 1)),
+		R: uint16(rand.Intn(0x10000)),
+		G: uint16(rand.Intn(0x10000)),
+		B: uint16(rand.Intn(0x10000)),
 		A: 0xffff,
 	}
 }
 
-// saturate by a percent
+// lighten by a percent
 // if want to darken give negative amount
 func Lighten(hsla HSLA, amount float64) HSLA {
 	hsla.L = math.Min(1, math.Max(0, amount/100))
